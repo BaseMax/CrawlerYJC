@@ -79,5 +79,5 @@ foreach ($categories as $category_link) {
     print "$category_link\n";
     $ids = parseCategory($category_link);
     file_put_contents(link2name($category_link) . ".json", json_encode($ids));
-    exit();
+    // exit();
 }
