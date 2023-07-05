@@ -43,8 +43,10 @@ function parseCategory(string $category_link) : array
     if ($category_page_ids === null) return [];
 
     $ids = (array) $category_page_ids["ids"];
+    print count($ids) . "\n";
 
     while ($category_page_ids["next_page"] !== null) {
+        print "next page: " . $category_page_ids["next_page"] . "\n";
         $category_page_ids = checkCategory($category_page_ids["next_page"]);
         $ids = array_merge($ids, $category_page_ids["ids"]);
     }
@@ -74,6 +76,8 @@ $categories = [
 
 // Main
 foreach ($categories as $category_link) {
+    print "$category_link\n";
     $ids = parseCategory($category_link);
-    file_put_contents(link2name($category_link), json_encode($ids));
+    file_put_contents(link2name($category_link) . ".json", json_encode($ids));
+    exit();
 }
