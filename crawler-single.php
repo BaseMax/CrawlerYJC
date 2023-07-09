@@ -17,7 +17,11 @@ function fetchNews(int $id)
 {
     $url = "https://www.yjc.ir/fa/news/" . $id . "/";
     if (file_exists("cache/" . $id . ".html")) {
-        $data = file_get_contents("cache/" . $id . ".html");
+        $data = trim(file_get_contents("cache/" . $id . ".html"));
+        if ($data === "" || $data === null) {
+            $data = sendGet($url);
+            file_put_contents("cache/" . $id . ".html", $data);
+        }
     } else {
         $data = sendGet($url);
         file_put_contents("cache/" . $id . ".html", $data);
