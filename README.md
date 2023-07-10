@@ -24,7 +24,7 @@ Run the crawler script:
 php crawler.php
 ```
 
-The crawler will start fetching and scraping news articles. The scraped data will be saved in the OUTPUT_DIR directory in JSON format.
+The crawler will start fetching and scraping news articles. The scraped data will be saved in the `news` directory in JSON format.
 
 ## Contributing
 
